@@ -138,6 +138,10 @@ func (udger *Udger) findData(ua string, data []rexData, withVersion bool) (idx i
 		if !r.MatchString(ua) {
 			continue
 		}
+		//TODO: implement with regexp lib for support browser version & name
+		//if withVersion && matcher.Present(1) {
+		//	return data[i].ID, matcher.GroupString(1), nil
+		//}
 		return data[i].ID, "", nil
 	}
 	return -1, "", nil

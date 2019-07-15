@@ -14,7 +14,7 @@ func main() {
 	//}
 
 	file := "../udgerdb_v3.dat"
-	usag := "Opera/9.50 (Nintendo DSi; Opera/507; U; en-US)"
+	usag := "Mozilla/5.0 (Linux; Android 4.4.4; MI PAD Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Safari/537.36"
 	u, err := udger.New(file, &udger.Flags{Device: true})
 	if err != nil {
 		fmt.Println("error: ", err)
