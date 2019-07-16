@@ -24,7 +24,8 @@ func main() {
 	fmt.Println(len(u.Browsers), "browsers loaded")
 	fmt.Println(len(u.OS), "OS loaded")
 	fmt.Println(len(u.Devices), "device types loaded")
-	fmt.Println("")
+	fmt.Println(len(u.Devices), "device types loaded")
+	fmt.Printf("%#v", u.Devices)
 
 	ua, err := u.Lookup(usag)
 	if err != nil {
