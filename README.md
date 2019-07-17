@@ -1,17 +1,33 @@
-# Udger golang (format V3)
+# Udger golang (format V3):
 
-this package reads in memory all the database from [udger](https://udger.com) and lets you lookup user agents's metadatas.
+This package is a fork of github.com/udger/udger with the following changes:
+- Using golang regexp instead of github.com/glenn-brown/golang-pkg-pcre
+- Supporting partial UA parsing by constructor flags (device, browser, os)
 
-# install
+# Usage:
+
 ```
-go get github.com/udger/udger
+package main
+
+import (
+  "github.com/yoavfeld/udger"
+)
+
+func main() {
+  client, err := udger.New("udgerDBv3FilePath", &udger.Flags{Device: true})
+  if err != nil {
+     log.Fatal(err)
+  }
+  ua := "Mozilla/5.0 (Linux; Android 4.4.4; MI PAD Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Safari/537.36"
+  res,err := client.Lookup(ua)
+  if err != nil {
+    log.Fatal(err)
+  }
+}
+
+
 ```
-# Documentation
-For detailed documentation and basic usage examples, please see the package documentation at https://godoc.org/github.com/udger/udger
 
-# Automatic updates download
-For autoupdate data use Udger data updater (https://udger.com/support/documentation/?doc=62)
+# Open issues:
 
-# old v2 format
-
-If you still use the previous format of the db (v2), please see the branch `old_format_v2`
+- Browser version is not supported since using golang regexp. it require a fic in findData func to support findDataWithVersion func
